@@ -1492,7 +1492,7 @@ def clone(
     protocol_version: int | None = None,
     recurse_submodules: bool = False,
     ssh_command: str | None = None,
-    **kwargs: str | bytes | Sequence[str | bytes],
+    **kwargs: TransportKwargs,
 ) -> Repo:
     """Clone a local or remote git repository.
 
@@ -1515,8 +1515,7 @@ def clone(
         mutually supported protocol version will be used.
       recurse_submodules: Whether to initialize and clone submodules
       ssh_command: Optional custom SSH command
-      **kwargs: Additional keyword arguments including refspecs to fetch.
-        Can be a bytestring, a string, or a list of bytestring/string.
+      **kwargs: Additional keyword arguments for the client
 
     Returns: The new repository
     """
@@ -3110,7 +3109,7 @@ def push(
     set_upstream: bool = False,
     follow_tags: bool = False,
     mirror: bool = False,
-    **kwargs: object,
+    **kwargs: TransportKwargs,
 ) -> SendPackResult:
     """Remote push with dulwich via dulwich.client.
 
@@ -3343,7 +3342,7 @@ def pull(
     force: bool = False,
     filter_spec: str | None = None,
     protocol_version: int | None = None,
-    **kwargs: object,
+    **kwargs: TransportKwargs,
 ) -> None:
     """Pull from remote via dulwich.client.
 
